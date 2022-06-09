@@ -16,7 +16,7 @@ public class GroceryService {
 		}
 		
 		try(
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+			Connection con = DriverManager.getConnection("jdbc:mysql://@ua-lms.cebykm9pummx.ap-south-1.rds.amazonaws.com:3306","admin","Passwd123");
 			Statement st = con.createStatement();
 		){
 			String query = "INSERT INTO GROCERY.GROCERY(NAME,PRICE) values('" + itemName + "'," + itemPrice + ")";
@@ -42,14 +42,14 @@ public class GroceryService {
 		}
 
 		try(
-			Connection con = DriverManager.getConnection("jdbc:mysql://@localhost:3306/GROCERY","root","root");
-			Statement st = con.createStatement();
+				Connection con = DriverManager.getConnection("jdbc:mysql://@ua-lms.cebykm9pummx.ap-south-1.rds.amazonaws.com:3306","admin","Passwd123");
+				Statement st = con.createStatement();
 		){
 			String query = "SELECT NAME, PRICE FROM GROCERY.GROCERY WHERE NAME='" + itemName + "'";
 			ResultSet rs = st.executeQuery(query);
 			
 			while(rs.next()) {
-				return rs.getDouble(1);
+				return rs.getDouble(2);
 			}
 			
 		} catch(SQLException se) {
@@ -69,8 +69,8 @@ public class GroceryService {
 		}
 
 		try(
-			Connection con = DriverManager.getConnection("jdbc:mysql://@localhost:3306/GROCERY","root","root");
-			Statement st = con.createStatement();
+				Connection con = DriverManager.getConnection("jdbc:mysql://@ua-lms.cebykm9pummx.ap-south-1.rds.amazonaws.com:3306","admin","Passwd123");
+				Statement st = con.createStatement();
 		){
 			
 			String query = "UPDATE GROCERY.GROCERY SET PRICE=" + newPrice +" WHERE NAME='" + itemName + "'";
@@ -96,8 +96,8 @@ public class GroceryService {
 		}
 
 		try(
-			Connection con = DriverManager.getConnection("jdbc:mysql://@localhost:3306/GROCERY","root","root");
-			Statement st = con.createStatement();
+				Connection con = DriverManager.getConnection("jdbc:mysql://@ua-lms.cebykm9pummx.ap-south-1.rds.amazonaws.com:3306","admin","Passwd123");
+				Statement st = con.createStatement();
 		){
 			String query = "DELETE FROM GROCERY.GROCERY WHERE NAME='" + itemName + "'";
 			int count = st.executeUpdate(query);
